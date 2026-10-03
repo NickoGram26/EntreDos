@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>EntreDos ❤️</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+<body>
+
+    <!-- ========================================= -->
+    <!-- PORTADA -->
+    <!-- ========================================= -->
+
+    <main class="portada">
+
+        <div class="particula p1">♡</div>
+        <div class="particula p2">♥</div>
+        <div class="particula p3">♡</div>
+        <div class="particula p4">♥</div>
+
+        <div class="contenido">
+
+            <div class="corazon">
+                ♡
+            </div>
+
+            <h1>
+                EntreDos
+            </h1>
+
+            <div class="linea"></div>
+
+            <p class="subtitulo">
+                Tu historia, en un solo lugar.
+            </p>
+
+            <p class="frase">
+                Hecho para lo que importa
+            </p>
+
+            <button class="boton">
+                Crear mi historia ❤️
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- ========================================= -->
+    <!-- CREADOR -->
+    <!-- ========================================= -->
+
+    <section class="creador" id="creador">
+
+        <div class="creador-contenido">
+
+            <span class="creador-icono">
+                ♡
+            </span>
+
+            <h2>
+                Crear tu historia
+            </h2>
+
+            <p class="creador-descripcion">
+                Cuéntanos un poco sobre esa persona especial.
+            </p>
+
+
+            <!-- NOMBRE -->
+
+            <div class="campo">
+
+                <label for="nombre">
+                    ¿Cómo se llama? ❤️
+                </label>
+
+                <input
+                    type="text"
+                    id="nombre"
+                    placeholder="Ej: Cata"
+                >
+
+            </div>
+
+
+            <!-- FECHA -->
+
+            <div class="campo">
+
+                <label for="fecha">
+                    ¿Cuándo comenzó su historia?
+                </label>
+
+                <input
+                    type="date"
+                    id="fecha"
+                >
+
+            </div>
+
+
+            <!-- MENSAJE -->
+
+            <div class="campo">
+
+                <label for="mensaje">
+                    Escribe un mensaje
+                </label>
+
+                <textarea
+                    id="mensaje"
+                    placeholder="Escribe algo especial..."
+                    rows="5"
+                ></textarea>
+
+            </div>
+
+
+            <!-- FOTOS -->
+
+            <div class="campo">
+
+                <label for="fotos">
+                    Agrega tus fotos 📸
+                </label>
+
+                <input
+                    type="file"
+                    id="fotos"
+                    accept="image/*"
+                    multiple
+                >
+
+                <p class="ayuda-fotos">
+                    Puedes seleccionar varias fotos.
+                </p>
+
+            </div>
+
+
+            <!-- SPOTIFY -->
+
+            <div class="campo">
+
+                <label for="spotify">
+                    ¿Qué canción representa su historia? 🎵
+                </label>
+
+                <input
+                    type="url"
+                    id="spotify"
+                    placeholder="Pega aquí tu enlace de Spotify"
+                >
+
+                <p class="ayuda-fotos">
+                    Ej: https://open.spotify.com/track/...
+                </p>
+
+            </div>
+
+
+            <!-- CONTINUAR -->
+
+            <button class="boton crear-pagina">
+                Continuar ❤️
+            </button>
+
+
+            <!-- ========================================= -->
+            <!-- VISTA PREVIA -->
+            <!-- ========================================= -->
+
+            <div class="vista-previa">
+
+                <div class="vista-previa-titulo">
+                    Así se verá tu historia ❤️
+                </div>
+
+
+                <div
+                    class="tarjeta-previa"
+                    id="tarjeta-previa"
+                >
+
+                    <span class="previa-corazon">
+                        ♡
+                    </span>
+
+
+                    <h3 id="previa-nombre">
+                        Tu persona especial
+                    </h3>
+
+
+                    <p id="previa-fecha">
+                        Nuestra historia comienza aquí
+                    </p>
+
+
+                    <div class="previa-linea"></div>
+
+
+                    <!-- MENSAJE -->
+
+                    <div class="previa-mensaje-contenedor">
+
+                        <p id="previa-mensaje">
+                            Tu mensaje aparecerá aquí...
+                        </p>
+
+                    </div>
+
+
+                    <!-- CANCIÓN -->
+
+                    <div class="previa-cancion">
+
+                        <span>
+                            🎵
+                        </span>
+
+                        <p id="previa-spotify">
+                            Aquí aparecerá tu canción
+                        </p>
+
+                    </div>
+
+
+                    <!-- TEMA -->
+
+                    <div class="previa-tema">
+
+                        <p id="previa-tema">
+                            🌹 Clásico
+                        </p>
+
+                    </div>
+
+
+                    <!-- FOTOS -->
+
+                    <div
+                        class="previa-fotos"
+                        id="galeria-previa"
+                    ></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================= -->
+    <!-- PERSONALIZADOR -->
+    <!-- ========================================= -->
+
+    <section
+        class="personalizador"
+        id="personalizador"
+    >
+
+        <div class="personalizador-contenido">
+
+            <span class="personalizador-icono">
+                ✦
+            </span>
+
+            <h2>
+                Personaliza tu historia
+            </h2>
+
+            <p class="personalizador-descripcion">
+                Elige el estilo que más represente su historia.
+            </p>
+
+
+            <div class="temas">
+
+
+                <!-- CLÁSICO -->
+
+                <button
+                    class="tema activo"
+                    data-tema="clasico"
+                >
+
+                    <div class="tema-preview clasico"></div>
+
+                    <span>
+                        🌹 Clásico
+                    </span>
+
+                </button>
+
+
+                <!-- NOCHE -->
+
+                <button
+                    class="tema"
+                    data-tema="noche"
+                >
+
+                    <div class="tema-preview noche"></div>
+
+                    <span>
+                        🌙 Noche
+                    </span>
+
+                </button>
+
+
+                <!-- SUAVE -->
+
+                <button
+                    class="tema"
+                    data-tema="suave"
+                >
+
+                    <div class="tema-preview suave"></div>
+
+                    <span>
+                        🌸 Suave
+                    </span>
+
+                </button>
+
+            </div>
+
+
+            <button class="boton crear-final">
+                Crear mi página ❤️
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <!-- ========================================= -->
+    <!-- SUPABASE -->
+    <!-- ========================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+
+        const SUPABASE_URL =
+            "https://kkshmuyqeqljamlqrbov.supabase.co";
+
+        const SUPABASE_PUBLISHABLE_KEY =
+            "sb_publishable_A8yZt3n3V7yi6UTEfvZ5Ew_NNOLnU8g";
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_PUBLISHABLE_KEY
+            );
+
+        window.supabaseClient = supabaseClient;
+
+    </script>
+
+
+    <!-- ========================================= -->
+    <!-- JAVASCRIPT DE ENTREDOS -->
+    <!-- ========================================= -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
