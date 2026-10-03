@@ -699,6 +699,646 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     // =========================================
+    // MOSTRAR RESULTADO DE HISTORIA CREADA
+    // =========================================
+
+    function mostrarHistoriaCreada(urlHistoria) {
+
+        const overlay =
+            document.createElement("div");
+
+        overlay.id =
+            "entre-dos-resultado";
+
+
+        overlay.innerHTML = `
+
+            <div class="entre-dos-resultado-contenido">
+
+                <div class="entre-dos-resultado-corazon">
+                    ❤️
+                </div>
+
+                <h2>
+                    ¡Tu historia está lista!
+                </h2>
+
+                <p>
+                    Ahora puedes enviársela a esa persona especial.
+                </p>
+
+                <div class="entre-dos-link-box">
+
+                    <input
+                        type="text"
+                        value="${urlHistoria}"
+                        readonly
+                        id="entre-dos-link"
+                    >
+
+                    <button
+                        type="button"
+                        id="entre-dos-copiar"
+                    >
+                        📋 Copiar enlace
+                    </button>
+
+                </div>
+
+                <p
+                    id="entre-dos-copiado"
+                    class="entre-dos-copiado"
+                >
+                </p>
+
+                <div class="entre-dos-acciones">
+
+                    <button
+                        type="button"
+                        id="entre-dos-abrir"
+                    >
+                        ❤️ Abrir historia
+                    </button>
+
+                    <button
+                        type="button"
+                        id="entre-dos-cerrar"
+                    >
+                        Crear otra historia
+                    </button>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        const estilos =
+            document.createElement("style");
+
+
+        estilos.textContent = `
+
+            #entre-dos-resultado {
+
+                position: fixed;
+                inset: 0;
+                z-index: 99999;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                padding: 20px;
+
+                background:
+                    rgba(40, 10, 25, 0.72);
+
+                backdrop-filter:
+                    blur(10px);
+
+                -webkit-backdrop-filter:
+                    blur(10px);
+
+                opacity: 0;
+
+                animation:
+                    entreDosAparecer
+                    0.35s ease forwards;
+
+            }
+
+
+            .entre-dos-resultado-contenido {
+
+                width: 100%;
+                max-width: 560px;
+
+                box-sizing: border-box;
+
+                padding: 38px 30px;
+
+                text-align: center;
+
+                background:
+                    linear-gradient(
+                        145deg,
+                        #fff8fa 0%,
+                        #ffe7ed 100%
+                    );
+
+                border:
+                    1px solid rgba(217, 79, 112, 0.25);
+
+                border-radius:
+                    28px;
+
+                box-shadow:
+                    0 25px 80px
+                    rgba(80, 20, 40, 0.35);
+
+                transform:
+                    translateY(20px)
+                    scale(0.97);
+
+                animation:
+                    entreDosSubir
+                    0.4s ease
+                    0.05s forwards;
+
+            }
+
+
+            .entre-dos-resultado-corazon {
+
+                font-size: 42px;
+
+                margin-bottom: 8px;
+
+            }
+
+
+            .entre-dos-resultado-contenido h2 {
+
+                margin:
+                    0 0 10px;
+
+                color:
+                    #8f2945;
+
+                font-size:
+                    30px;
+
+            }
+
+
+            .entre-dos-resultado-contenido > p {
+
+                margin:
+                    0 auto 24px;
+
+                max-width:
+                    420px;
+
+                color:
+                    #6b2638;
+
+                line-height:
+                    1.6;
+
+                font-size:
+                    16px;
+
+            }
+
+
+            .entre-dos-link-box {
+
+                display:
+                    flex;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    10px;
+
+                width:
+                    100%;
+
+                margin-bottom:
+                    12px;
+
+            }
+
+
+            #entre-dos-link {
+
+                width:
+                    100%;
+
+                box-sizing:
+                    border-box;
+
+                padding:
+                    14px 16px;
+
+                border:
+                    1px solid
+                    rgba(143, 41, 69, 0.22);
+
+                border-radius:
+                    14px;
+
+                background:
+                    #ffffff;
+
+                color:
+                    #5c2636;
+
+                font-size:
+                    14px;
+
+                text-align:
+                    center;
+
+                outline:
+                    none;
+
+            }
+
+
+            #entre-dos-copiar {
+
+                width:
+                    100%;
+
+                border:
+                    none;
+
+                border-radius:
+                    14px;
+
+                padding:
+                    14px 18px;
+
+                background:
+                    #d94f70;
+
+                color:
+                    white;
+
+                font-size:
+                    16px;
+
+                font-weight:
+                    600;
+
+                cursor:
+                    pointer;
+
+                transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease;
+
+            }
+
+
+            #entre-dos-copiar:hover {
+
+                transform:
+                    translateY(-2px);
+
+                box-shadow:
+                    0 8px 20px
+                    rgba(217, 79, 112, 0.3);
+
+            }
+
+
+            #entre-dos-copiar.copiado {
+
+                background:
+                    #7dba8a;
+
+            }
+
+
+            .entre-dos-copiado {
+
+                min-height:
+                    24px;
+
+                margin:
+                    0 0 8px !important;
+
+                color:
+                    #4d8c5c !important;
+
+                font-size:
+                    14px !important;
+
+            }
+
+
+            .entre-dos-acciones {
+
+                display:
+                    flex;
+
+                flex-direction:
+                    column;
+
+                gap:
+                    10px;
+
+                margin-top:
+                    8px;
+
+            }
+
+
+            #entre-dos-abrir {
+
+                width:
+                    100%;
+
+                border:
+                    none;
+
+                border-radius:
+                    14px;
+
+                padding:
+                    14px 18px;
+
+                background:
+                    #8f2945;
+
+                color:
+                    white;
+
+                font-size:
+                    16px;
+
+                font-weight:
+                    600;
+
+                cursor:
+                    pointer;
+
+                transition:
+                    transform 0.2s ease,
+                    box-shadow 0.2s ease;
+
+            }
+
+
+            #entre-dos-abrir:hover {
+
+                transform:
+                    translateY(-2px);
+
+                box-shadow:
+                    0 8px 20px
+                    rgba(143, 41, 69, 0.28);
+
+            }
+
+
+            #entre-dos-cerrar {
+
+                border:
+                    none;
+
+                background:
+                    transparent;
+
+                color:
+                    #8f2945;
+
+                font-size:
+                    14px;
+
+                cursor:
+                    pointer;
+
+                padding:
+                    8px;
+
+            }
+
+
+            @keyframes entreDosAparecer {
+
+                from {
+                    opacity: 0;
+                }
+
+                to {
+                    opacity: 1;
+                }
+
+            }
+
+
+            @keyframes entreDosSubir {
+
+                from {
+                    transform:
+                        translateY(20px)
+                        scale(0.97);
+
+                }
+
+                to {
+                    transform:
+                        translateY(0)
+                        scale(1);
+
+                }
+
+            }
+
+
+            @media (max-width: 500px) {
+
+                .entre-dos-resultado-contenido {
+
+                    padding:
+                        30px 20px;
+
+                    border-radius:
+                        22px;
+
+                }
+
+
+                .entre-dos-resultado-contenido h2 {
+
+                    font-size:
+                        25px;
+
+                }
+
+
+                #entre-dos-link {
+
+                    font-size:
+                        12px;
+
+                }
+
+            }
+
+        `;
+
+
+        document.head.appendChild(
+            estilos
+        );
+
+        document.body.appendChild(
+            overlay
+        );
+
+
+        // =====================================
+        // COPIAR ENLACE
+        // =====================================
+
+        const botonCopiar =
+            document.getElementById(
+                "entre-dos-copiar"
+            );
+
+
+        const campoEnlace =
+            document.getElementById(
+                "entre-dos-link"
+            );
+
+
+        const mensajeCopiado =
+            document.getElementById(
+                "entre-dos-copiado"
+            );
+
+
+        if (botonCopiar) {
+
+            botonCopiar.addEventListener(
+                "click",
+                async () => {
+
+                    try {
+
+                        await navigator.clipboard.writeText(
+                            urlHistoria
+                        );
+
+                        botonCopiar.textContent =
+                            "✅ ¡Enlace copiado!";
+
+                        botonCopiar.classList.add(
+                            "copiado"
+                        );
+
+                        if (mensajeCopiado) {
+
+                            mensajeCopiado.textContent =
+                                "Ya puedes pegarlo en WhatsApp, Instagram o donde quieras ❤️";
+
+                        }
+
+                    } catch (error) {
+
+                        if (campoEnlace) {
+
+                            campoEnlace.select();
+                            campoEnlace.setSelectionRange(
+                                0,
+                                99999
+                            );
+
+                        }
+
+                        document.execCommand(
+                            "copy"
+                        );
+
+                        botonCopiar.textContent =
+                            "✅ ¡Enlace copiado!";
+
+                        botonCopiar.classList.add(
+                            "copiado"
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        // =====================================
+        // ABRIR HISTORIA
+        // =====================================
+
+        const botonAbrir =
+            document.getElementById(
+                "entre-dos-abrir"
+            );
+
+
+        if (botonAbrir) {
+
+            botonAbrir.addEventListener(
+                "click",
+                () => {
+
+                    window.location.href =
+                        urlHistoria;
+
+                }
+            );
+
+        }
+
+
+        // =====================================
+        // CREAR OTRA HISTORIA
+        // =====================================
+
+        const botonCerrar =
+            document.getElementById(
+                "entre-dos-cerrar"
+            );
+
+
+        if (botonCerrar) {
+
+            botonCerrar.addEventListener(
+                "click",
+                () => {
+
+                    overlay.remove();
+
+                    estilos.remove();
+
+                    window.scrollTo({
+                        top: 0,
+                        behavior: "smooth"
+                    });
+
+                }
+            );
+
+        }
+
+
+        // Seleccionamos automáticamente
+        // el enlace para facilitar su copia.
+
+        if (campoEnlace) {
+
+            campoEnlace.addEventListener(
+                "click",
+                () => {
+
+                    campoEnlace.select();
+
+                }
+            );
+
+        }
+
+    }
+
+
+    // =========================================
     // BOTÓN CONTINUAR
     // =========================================
 
@@ -789,9 +1429,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
 
-                // Guardamos el slug localmente
-                // para utilizarlo en el siguiente
-                // paso del proyecto.
+                // Guardamos el slug localmente.
 
                 localStorage.setItem(
                     "entreDosSlug",
@@ -799,15 +1437,33 @@ document.addEventListener("DOMContentLoaded", () => {
                 );
 
 
-                // Por ahora historia.html
-                // seguirá funcionando con
-                // localStorage.
+                // =====================================
+                // GENERAR ENLACE PARA COMPARTIR
+                // =====================================
 
-                window.location.href =
-                    "historia.html?historia=" +
-                    encodeURIComponent(
-                        historiaGuardada.slug
-                    );
+                const urlHistoria =
+                    new URL(
+                        "historia.html?historia=" +
+                        encodeURIComponent(
+                            historiaGuardada.slug
+                        ),
+                        window.location.href
+                    ).href;
+
+
+                // Restauramos el botón.
+
+                botonFinal.disabled = false;
+
+                botonFinal.textContent =
+                    textoOriginal;
+
+
+                // Mostramos el enlace.
+
+                mostrarHistoriaCreada(
+                    urlHistoria
+                );
 
             }
         );
