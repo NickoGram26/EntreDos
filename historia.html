@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mi historia ❤️ | EntreDos</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <section class="bienvenida" id="bienvenida">
+
+        <div class="bienvenida-contenido">
+
+            <div class="bienvenida-corazon">♡</div>
+
+            <p class="bienvenida-pequeno">
+                Alguien preparó algo especial para ti...
+            </p>
+
+            <h1 id="bienvenida-nombre">
+                Tu persona especial
+            </h1>
+
+            <div class="bienvenida-linea"></div>
+
+            <p class="bienvenida-frase">
+                Una historia que merece ser recordada.
+            </p>
+
+            <button class="boton boton-abrir" id="boton-abrir">
+                Abrir mi historia ❤️
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <main class="historia" id="historia">
+
+        <div class="historia-contenido">
+
+
+            <section class="historia-encabezado">
+
+                <div class="historia-corazon">♡</div>
+
+                <h1 id="historia-nombre">
+                    Tu persona especial
+                </h1>
+
+                <p id="historia-fecha">
+                    Nuestra historia comienza aquí
+                </p>
+
+            </section>
+
+
+            <section class="contador seccion-scroll" id="seccion-contador">
+
+                <p class="contador-titulo">
+                    Llevamos juntos
+                </p>
+
+                <div class="contador-tiempo">
+
+                    <div class="contador-unidad">
+                        <span id="contador-anios">0</span>
+                        <small>años</small>
+                    </div>
+
+                    <div class="contador-unidad">
+                        <span id="contador-meses">0</span>
+                        <small>meses</small>
+                    </div>
+
+                    <div class="contador-unidad">
+                        <span id="contador-dias">0</span>
+                        <small>días</small>
+                    </div>
+
+                    <div class="contador-unidad">
+                        <span id="contador-horas">0</span>
+                        <small>horas</small>
+                    </div>
+
+                    <div class="contador-unidad">
+                        <span id="contador-minutos">0</span>
+                        <small>minutos</small>
+                    </div>
+
+                    <div class="contador-unidad">
+                        <span id="contador-segundos">0</span>
+                        <small>segundos</small>
+                    </div>
+
+                </div>
+
+                <p class="contador-corazon">
+                    ❤️
+                </p>
+
+            </section>
+
+
+            <section class="mensaje-seccion seccion-scroll" id="mensaje-seccion">
+
+                <div class="mensaje-titulo">
+
+                    <span>♡</span>
+
+                    <h2>
+                        Para ti
+                    </h2>
+
+                </div>
+
+                <div class="mensaje-cuadro">
+
+                    <p id="historia-mensaje">
+                        Tu mensaje aparecerá aquí...
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <section class="spotify-seccion seccion-scroll" id="spotify-seccion">
+
+                <div class="spotify-icono">
+                    ♪
+                </div>
+
+                <h2>
+                    Nuestra canción
+                </h2>
+
+                <p>
+                    Porque algunas historias también se cuentan con música.
+                </p>
+
+                <div
+                    class="spotify-contenedor"
+                    id="spotify-contenedor">
+                </div>
+
+            </section>
+
+
+            <section class="recuerdos-seccion seccion-scroll" id="recuerdos-seccion">
+
+                <div class="recuerdos-titulo">
+
+                    <span>♡</span>
+
+                    <h2>
+                        Nuestros recuerdos
+                    </h2>
+
+                    <p>
+                        Momentos que merecen quedarse para siempre.
+                    </p>
+
+                </div>
+
+                <div
+                    class="historia-galeria"
+                    id="historia-galeria">
+                </div>
+
+            </section>
+
+
+            <section class="historia-final seccion-scroll">
+
+                <div class="final-corazon">
+                    ♥
+                </div>
+
+                <p>
+                    Y esta es solo una parte de nuestra historia.
+                </p>
+
+                <span>
+                    Hecho con ❤️ en EntreDos
+                </span>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <script>
+
+        const SUPABASE_URL =
+            "https://kkshmuyqeqljamlqrbov.supabase.co";
+
+        const SUPABASE_PUBLISHABLE_KEY =
+            "sb_publishable_A8yZt3n3V7yi6UTEfvZ5Ew_NNOLnU8g";
+
+        const supabaseClient =
+            supabase.createClient(
+                SUPABASE_URL,
+                SUPABASE_PUBLISHABLE_KEY
+            );
+
+        window.supabaseClient = supabaseClient;
+
+    </script>
+
+
+    <!-- Lógica de la historia -->
+    <script src="js/historia.js"></script>
+
+</body>
+</html>
