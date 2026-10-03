@@ -534,10 +534,34 @@ document.addEventListener("DOMContentLoaded", () => {
             obtenerHistoria();
 
 
-        localStorage.setItem(
-            "entreDosHistoria",
-            JSON.stringify(historia)
-        );
+        // Las fotos se guardan directamente en Supabase.
+        // No las almacenamos en localStorage porque en celulares
+        // pueden superar rápidamente el límite de almacenamiento.
+
+        const historiaLocal = {
+
+            ...historia,
+
+            fotos: []
+
+        };
+
+
+        try {
+
+            localStorage.setItem(
+                "entreDosHistoria",
+                JSON.stringify(historiaLocal)
+            );
+
+        } catch (error) {
+
+            console.warn(
+                "No se pudo guardar la historia localmente:",
+                error
+            );
+
+        }
 
 
         return historia;
@@ -706,6 +730,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const overlay =
             document.createElement("div");
+
 
         overlay.id =
             "entre-dos-resultado";
@@ -1126,6 +1151,7 @@ document.addEventListener("DOMContentLoaded", () => {
             @keyframes entreDosSubir {
 
                 from {
+
                     transform:
                         translateY(20px)
                         scale(0.97);
@@ -1133,6 +1159,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
 
                 to {
+
                     transform:
                         translateY(0)
                         scale(1);
@@ -1179,6 +1206,7 @@ document.addEventListener("DOMContentLoaded", () => {
             estilos
         );
 
+
         document.body.appendChild(
             overlay
         );
@@ -1218,12 +1246,14 @@ document.addEventListener("DOMContentLoaded", () => {
                             urlHistoria
                         );
 
+
                         botonCopiar.textContent =
                             "✅ ¡Enlace copiado!";
 
                         botonCopiar.classList.add(
                             "copiado"
                         );
+
 
                         if (mensajeCopiado) {
 
@@ -1247,6 +1277,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         document.execCommand(
                             "copy"
                         );
+
 
                         botonCopiar.textContent =
                             "✅ ¡Enlace copiado!";
